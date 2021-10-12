@@ -11,7 +11,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
-	res.status(200).send('Server is working.')
+	res.status(200).send('Server is workingasdas.')
 })
 
 app.listen(port, () => {
@@ -19,9 +19,10 @@ app.listen(port, () => {
 })
 
 app.post('/getmovie', (req, res) => {
+	console.log(req.body.queryResult);
 	const movieToSearch =
 		req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.movie
-			? req.body.result.parameters.movie
+			? req.body.queryResult.parameters.movie
 			: ''
 
 	const reqUrl = encodeURI(
@@ -36,7 +37,7 @@ app.post('/getmovie', (req, res) => {
 			})
 			responseFromAPI.on('end', () => {
 				const movie = JSON.parse(completeResponse)
-
+				console.log(movie);
 				let dataToSend = movieToSearch
 				dataToSend = `${movie.Title} was released in the year ${movie.Year}. It is directed by ${
 					movie.Director
