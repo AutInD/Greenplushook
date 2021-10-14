@@ -19,3 +19,5 @@ db.connect((err) =>{
 // ปิดการเชื่อมต่อฐานข้อมูล MySQL ในที่นี้เราจะไม่ให้ทำงาน
 // db.end() 
 module.exports = db
+
+
